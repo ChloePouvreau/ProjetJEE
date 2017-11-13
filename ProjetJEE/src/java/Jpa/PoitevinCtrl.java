@@ -6,8 +6,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 
-
-@Named(value="alanprojet")
+@Named(value="ctlrpoit")
 @ViewScoped
 public class PoitevinCtrl implements Serializable{
     
@@ -48,11 +47,11 @@ public class PoitevinCtrl implements Serializable{
         this.poit.setEmail(mail);
     }     
 
-    public Poitevin getEtu() {
+    public Poitevin getPoitevin() {
         return poit;
     }
 
-    public void setEtu(Poitevin poitevin) {
+    public void setPoitevin(Poitevin poitevin) {
         this.poit = poitevin;
     }
     
