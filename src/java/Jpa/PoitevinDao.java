@@ -15,7 +15,7 @@ import javax.persistence.Query;
 @Stateless
 public class PoitevinDao {
     
-    @PersistenceContext(unitName="DemoJpaPU")
+    @PersistenceContext(unitName="ProjetJEEPU")
     private EntityManager em;
     
     public List<Poitevin> findAll(){
