@@ -12,16 +12,17 @@
         
         <h:form> 
             <center>
+                Login ou mot de passe incorrect
             <table border="1" cellpadding="10" cellspacing="0,5" width="30%" bgcolor="ff6600" >
                 <tr>
-                    <th width="40%" align="center">Login : </th> <td><p:inputText value ="#{ctlrpoit.poit.login}"/></td>   
+                    <th width="40%" align="center">Login : </th> <td><p:inputText value ="#{ctlrpoit.poitevin.login}"/></td>   
                 </tr>
                 <tr>
-                    <th width="40%" align="center">Mot de passe : </th> <td><p:inputText value ="#{ctlrpoit.poit.motDePasse}"/></td>
+                    <th width="40%" align="center">Mot de passe : </th> <td><p:inputText value ="#{ctlrpoit.poitevin.motDePasse}"/></td>
                 </tr>
             </table>
                 <br />
-                <p:commandButton value ="Connexion" action="Accueil" update=""/>
+                <p:commandButton value ="Connexion" action="#{ctlrpoit.connexionPoitevin(ctlrpoit.poitevin.setLogin(),ctlrpoit.poitevin.setMotDePasse())}" update=""/>
             </center>
         </h:form>
     </h:body>

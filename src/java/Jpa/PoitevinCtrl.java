@@ -4,6 +4,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.swing.JOptionPane;
 
 
 @Named(value="ctlrpoit")
@@ -45,13 +46,22 @@ public class PoitevinCtrl implements Serializable{
         this.poit.setPrenom(prenom);
         this.poit.setMotDePasse(mdp);
         this.poit.setEmail(mail);
-    }     
+    }   
+    
+    public String connexionPoitevin(String login, String mdp)
+    {
+        if (dao.findForConnexion(login, mdp) == null) {
+            return "indexErreur";
+        } else {
+            return "Accueil";
+        }
+    }
 
-    public Poitevin getPoitevin() {
+    public Poitevin getPoit() {
         return poit;
     }
 
-    public void setPoitevin(Poitevin poitevin) {
+    public void setPoit(Poitevin poitevin) {
         this.poit = poitevin;
     }
     

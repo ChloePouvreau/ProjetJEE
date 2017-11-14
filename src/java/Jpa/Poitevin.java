@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Poitevin.findAll", query = "SELECT p FROM Poitevin p")
     , @NamedQuery(name = "Poitevin.findByLogin", query = "SELECT p FROM Poitevin p WHERE p.login = :login")
+    , @NamedQuery(name = "Poitevin.findForConnexion", query = "SELECT p FROM Poitevin p WHERE p.login = :login AND p.motDePasse = :motDePasse")
     , @NamedQuery(name = "Poitevin.findByNom", query = "SELECT p FROM Poitevin p WHERE p.nom = :nom")
     , @NamedQuery(name = "Poitevin.findByPrenom", query = "SELECT p FROM Poitevin p WHERE p.prenom = :prenom")
     , @NamedQuery(name = "Poitevin.findByAge", query = "SELECT p FROM Poitevin p WHERE p.age = :age")
@@ -36,35 +37,13 @@ public class Poitevin implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "Login")
     private String login;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "Nom")
     private String nom;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "Prenom")
     private String prenom;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "Age")
     private int age;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "Email")
     private String email;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "MotDePasse")
     private String motDePasse;
 
     public Poitevin() {
