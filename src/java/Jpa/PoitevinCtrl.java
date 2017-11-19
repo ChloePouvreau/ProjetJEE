@@ -24,6 +24,7 @@ public class PoitevinCtrl implements Serializable{
         return dao.findAll();
     }
     
+    
     public String addPoitevin(){
         dao.addPoitevin(this.poit);
         this.poit = new Poitevin();
@@ -48,10 +49,6 @@ public class PoitevinCtrl implements Serializable{
         this.poit.setPrenom(prenom);
         this.poit.setMotDePasse(mdp);
         this.poit.setEmail(mail);
-    }   
-    public void tryConnexion (String login, String mdp)
-    {
-        System.out.println(dao.findForConnexion(login, mdp));
     }
     
     public String connexionPoitevin(String login, String mdp)

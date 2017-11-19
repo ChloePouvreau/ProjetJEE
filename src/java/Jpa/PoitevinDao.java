@@ -28,7 +28,7 @@ public class PoitevinDao {
         return (Poitevin)query.getSingleResult();
     }
     
-    public Object findForConnexion(String log, String mdp) {
+    public Poitevin findForConnexion(String log, String mdp) {
         Query query = em.createNamedQuery("Poitevin.findForConnexion").setParameter("login", log).setParameter("motDePasse", mdp);
         return (Poitevin)query.getSingleResult();
     }
