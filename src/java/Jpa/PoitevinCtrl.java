@@ -53,10 +53,10 @@ public class PoitevinCtrl implements Serializable{
     
     public String connexionPoitevin(String login, String mdp)
     {
-        if (dao.findForConnexion(login, mdp) == null) {
-            return "indexErreur";
-        } else {
+        if (dao.findForConnexion(login, mdp).size() == 1) {
             return "Accueil";
+        } else {
+            return "indexErreur";
         }
     }
 
