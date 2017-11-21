@@ -9,17 +9,17 @@
     </h:head>
     <h:body>
         <h:form>    
-            <p:log/>
+           
             <p:panel id="panel" header="Que recherchez-vous ?" style="margin-bottom:10px;">
                 <h:panelGrid columns="5" cellspacing="10">
-                    <p:inputText id="objet" value="#{search.texte}" required="true" label="Objet" size="100">
+                    <p:inputText id="objet" value="#{search.objetRecherche}" required="true" label="Objet" size="100">
                     </p:inputText>
-                    <p:selectOneMenu id="categorie" value="#{search.categorie}" required="true" label="Catégorie">
-                        <f:selectItem itemLabel="Toutes catégories" itemValue="" />
+                    <p:selectOneMenu id="categorie" value="#{search.categorieRecherche}" required="true" label="Catégorie">
+                        <f:selectItem itemLabel="Toutes catégories" itemValue="All" />
                         <f:selectItems value="#{ctrlcategorie.categoriesName}" />
                     </p:selectOneMenu>
 
-                    <p:commandButton value="Rechercher" action="#{search.search()}" icon="ui-icon-search" />
+                    <p:commandButton value="Rechercher" action="#{search.search()}" ajax="false" icon="ui-icon-search" />
 
                 </h:panelGrid>
             </p:panel>

@@ -30,6 +30,10 @@ public class CategorieCtrl implements Serializable
         this.categorie = new Categorie();
     }
     
+    public Categorie getCategorie(){
+        return categorie;
+    }
+    
     public List<Categorie> getCategories(){
         return dao.findAll();
     }
@@ -43,6 +47,9 @@ public class CategorieCtrl implements Serializable
         }
         return noms;
     }
-
+    
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
     
 }

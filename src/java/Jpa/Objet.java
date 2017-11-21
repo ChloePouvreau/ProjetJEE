@@ -32,15 +32,23 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Objet.findAll", query = "SELECT o FROM Objet o")
     , @NamedQuery(name = "Objet.findById", query = "SELECT o FROM Objet o WHERE o.id = :id")
     , @NamedQuery(name = "Objet.findByNom", query = "SELECT o FROM Objet o WHERE o.nom = :nom")
-    , @NamedQuery(name = "Objet.findByNomUncomplete", query = "SELECT o FROM Objet o WHERE o.nom LIKE '%:nom%'")
+    , @NamedQuery(name = "Objet.findByNomUncomplete", query = "SELECT o FROM Objet o WHERE o.nom LIKE :nom")
     , @NamedQuery(name = "Objet.findByNomUncompleteAndCategory", query = "SELECT o FROM Objet o WHERE o.nom LIKE CONCAT('%',:nom,'%') AND o.categorie = :categorie")})
 public class Objet implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
     private Integer id;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
+    @Column(name = "Nom")
     private String nom;
+    @JoinColumn(name = "Categorie", referencedColumnName = "idCategorie")
+    @ManyToOne(optional = false)
     private Categorie categorie;
 
     public Objet() {

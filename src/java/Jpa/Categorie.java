@@ -6,9 +6,7 @@
 package Jpa;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,12 +14,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,17 +27,24 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "categorie")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Categorie.findAll", query = "SELECT c FROM Categorie c")
-    , @NamedQuery(name = "Categorie.findByIdCategorie", query = "SELECT c FROM Categorie c WHERE c.idCategorie = :idCategorie")
-    , @NamedQuery(name = "Categorie.findByNom", query = "SELECT c FROM Categorie c WHERE c.nom = :nom")
-    , @NamedQuery(name = "Categorie.findByImage", query = "SELECT c FROM Categorie c WHERE c.image = :image")
-    , @NamedQuery(name = "Categorie.search", query = "SELECT c FROM Categorie c WHERE c.nom = :nom")})
+    @NamedQuery(name = "Categorie.findAll", query = "SELECT c FROM Categorie c")})
 public class Categorie implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "idCategorie")
     private Integer idCategorie;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "nom")
     private String nom;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "image")
     private String image;
 
     public Categorie() {
@@ -104,5 +107,6 @@ public class Categorie implements Serializable {
     @Override
     public String toString() {
         return "Jpa.Categorie[ idCategorie=" + idCategorie + " ]";
-    }    
+    }
+    
 }

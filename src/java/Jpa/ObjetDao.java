@@ -25,17 +25,20 @@ public class ObjetDao {
         return em.createNamedQuery("Objet.findAll").getResultList();
     }
    
-    public Object findById(){
+    public Objet findById(){
         Query query = em.createNamedQuery("Objet.findById");
         return (Objet)query.getSingleResult();
     }
     
-    public Object findByNomUncomplete(){
+    public List<Objet> findByNomUncomplete(String nom){
         Query query = em.createNamedQuery("Objet.findByNomUncomplete");
-        return query.getResultList();
+        query.setParameter("nom", "%"+nom+"%");
+        List<Objet> result = query.getResultList();
+        System.out.println(result.size());
+        return result;
     }
     
-    public Object findByNomUncompleteAndCategory(){
+    public List<Objet> findByNomUncompleteAndCategory(){
         Query query = em.createNamedQuery("Objet.findByNomUncompleteAndCategory");
         return query.getResultList();
     }  
