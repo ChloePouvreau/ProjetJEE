@@ -44,20 +44,5 @@ public class CategorieCtrl implements Serializable
         return noms;
     }
 
-    public Categorie getCategorie() {
-        return categorie;
-    }
-
-    public void setCategorie(Categorie categorie) {
-        this.categorie = categorie;
-    }
     
-    public String getTexte()
-    {
-        return texte;
-    }
-    
-    public void setTexte(String texte) {
-        this.texte = texte;
-    }
 }

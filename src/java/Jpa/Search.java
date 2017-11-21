@@ -18,16 +18,18 @@ public class Search {
     @EJB
     private CategorieDao daoCategorie;
     private ObjetDao daoObjet;
-    private CategorieCtrl categorieCtrl;
     private ObjetCtrl objetCtrl;
+    private String texte;
+    private Categorie categorie;
     
-    public void search()
+    public String search()
     {
-        searchObject(this.categorieCtrl.getTexte(), this.categorieCtrl.getCategorie().getNom());
-        this.categorieCtrl.setCategorie(new Categorie());
+        //searchObject(this.getTexte(), this.getCategorie().getNom());
+        //this.setCategorie(new Categorie());
+        return "index";
     }
     
-    public void searchObject(String texte, String nomCategorie)
+    private void searchObject(String texte, String nomCategorie)
     {
         this.objetCtrl.getObjet().setNom(texte);
         if (nomCategorie=="")
@@ -40,5 +42,22 @@ public class Search {
             this.objetCtrl.getObjet().setCategorie(categorie);
             daoObjet.findByNomUncompleteAndCategory();
         }
+    }
+    
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+    
+    public String getTexte()
+    {
+        return texte;
+    }
+    
+    public void setTexte(String texte) {
+        this.texte = texte;
     }
 }

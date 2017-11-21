@@ -8,21 +8,18 @@
         <title>Accueil</title>
     </h:head>
     <h:body>
-        <h:form>      
+        <h:form>    
+            <p:log/>
             <p:panel id="panel" header="Que recherchez-vous ?" style="margin-bottom:10px;">
-                <p:messages id="messages" />
-
                 <h:panelGrid columns="5" cellspacing="10">
-                    <p:inputText id="objet" value="#{ctrlcategorie.texte}" required="true" label="Objet" size="100">
+                    <p:inputText id="objet" value="#{search.texte}" required="true" label="Objet" size="100">
                     </p:inputText>
-
-                    <h:selectOneMenu id="categorie" value="#{ctrlcategorie.categorie.nom}" required="true" label="Catégorie">
+                    <p:selectOneMenu id="categorie" value="#{search.categorie}" required="true" label="Catégorie">
                         <f:selectItem itemLabel="Toutes catégories" itemValue="" />
                         <f:selectItems value="#{ctrlcategorie.categoriesName}" />
-                        
-                    </h:selectOneMenu>
+                    </p:selectOneMenu>
 
-                    <p:commandButton value="Rechercher" id="rechercher" actionListener="#{search.search()}" icon="ui-icon-search" />
+                    <p:commandButton value="Rechercher" action="#{search.search()}" icon="ui-icon-search" />
 
                 </h:panelGrid>
             </p:panel>
