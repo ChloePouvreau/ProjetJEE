@@ -10,24 +10,21 @@
         <h1><center>InShare</center></h1><br />
         
         <body bgcolor = "#cc99ff"></body>
-        <p><span style ="float:left;"><img src="images/partage.jpg"/></span></p>
         
-        <p><span style = "float:right;">
-            <h:form> 
-                <center>
-                <table border="1" cellpadding="10" cellspacing="0,5" width="30%" bgcolor="#ff9999" >
-                    <tr>
-                        <th width="40%" align="center">Login : </th> <td><p:inputText value ="#{ctlrpoit.poit.login}"/></td>   
-                    </tr>
-                    <tr>
-                        <th width="40%" align="center">Mot de passe : </th> <td><p:inputText value ="#{ctlrpoit.poit.motDePasse}" type = "password"/></td>
-                    </tr>
-                </table>
-                <br />
-                <p:commandButton value ="Connexion" action="#{ctlrpoit.connexionPoitevin()}"/>
-                </center>
-            </h:form>
-        </span></p>
+        <h:form> 
+            <center>
+            <table border="1" cellpadding="10" cellspacing="0,5" width="30%" bgcolor="#ff9999" >
+                <tr>
+                    <th width="40%" align="center">Login : </th> <td><p:inputText value ="#{ctlrpoit.poit.login}"/></td>   
+                </tr>
+                <tr>
+                    <th width="40%" align="center">Mot de passe : </th> <td><p:inputText value ="#{ctlrpoit.poit.motDePasse}" type = "password"/></td>
+                </tr>
+            </table>
+            <br />
+            <p:commandButton value ="Connexion" action="#{ctlrpoit.connexionPoitevin()}"/>
+            </center>
+        </h:form>
         <h2> Pour l'accueil clique ici Chloé ! </h2>
         <h:link value="cliquez ici !" outcome="Accueil" />
     </h:body>
