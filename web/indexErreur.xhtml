@@ -22,11 +22,11 @@
                 </tr>
             </table>
                 <br />
-                <p:commandButton value ="Connexion" action="#{ctlrpoit.connexionPoitevin(ctlrpoit.poitevin.setLogin(),ctlrpoit.poitevin.setMotDePasse())}" update=""/>
+                <p:commandButton value ="Connexion" action="#{ctlrpoit.connexionPoitevin()}" update=""/>
             </center>
         </h:form>
+        <h2>Pour vous inscrire, </h2>
+        <h:link value="cliquez ici !" outcome="Inscription" />
     </h:body>
-    <h2>Pour vous inscrire, </h2>
-    <h:link value="cliquez ici !" outcome="Inscription" />
 </html>
 

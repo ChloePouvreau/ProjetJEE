@@ -51,9 +51,27 @@ public class PoitevinCtrl implements Serializable{
         this.poit.setEmail(mail);
     }
     
-    public String connexionPoitevin(String login, String mdp)
+    /* public String connexionPoitevin(String login, String mdp)
     {
         if (dao.findForConnexion(login, mdp).size() == 1) {
+            return "Accueil";
+        } else {
+            return "indexErreur";
+        }
+    } */
+    
+    public String connexionPoitevin()
+    {
+        List<Poitevin> listPoitevin = this.getPoitevins();
+        Poitevin monPoit;
+        boolean trouve = false;
+        for (int i = 0; i < listPoitevin.size(); i++){
+            monPoit = listPoitevin.get(i);
+            if (this.poit.getLogin().equals(monPoit.getLogin()) && this.poit.getMotDePasse().equals(monPoit.getMotDePasse())){
+                trouve = true;
+            }
+        }
+        if (trouve == true) {
             return "Accueil";
         } else {
             return "indexErreur";

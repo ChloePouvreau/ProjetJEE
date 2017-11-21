@@ -8,26 +8,27 @@
     </h:head>
     <h:body>
         <h1><center>InShare</center></h1><br />
-        <body bgcolor="#ff6600"></body>
+        <body bgcolor = "#cc99ff"></body>
+        <img src="images/partage.jpg"/>
         
         <h:form> 
             <center>
-            <table border="1" cellpadding="10" cellspacing="0,5" width="30%" bgcolor="ff6600" >
+            <table border="1" cellpadding="10" cellspacing="0,5" width="30%" bgcolor="#ff9999" >
                 <tr>
                     <th width="40%" align="center">Login : </th> <td><p:inputText value ="#{ctlrpoit.poit.login}"/></td>   
                 </tr>
                 <tr>
-                    <th width="40%" align="center">Mot de passe : </th> <td><p:inputText value ="#{ctlrpoit.poit.motDePasse}"/></td>
+                    <th width="40%" align="center">Mot de passe : </th> <td><p:inputText value ="#{ctlrpoit.poit.motDePasse}" type = "password"/></td>
                 </tr>
             </table>
                 <br />
-                <p:commandButton value ="Connexion" action="#{ctlrpoit.connexionPoitevin(poit.setLogin(), poit.setMotDePasse())}"/>
+                <p:commandButton value ="Connexion" action="#{ctlrpoit.connexionPoitevin()}"/>
             </center>
         </h:form>
+        <h2> Pour l'accueil clique ici Chloé ! </h2>
+        <h:link value="cliquez ici !" outcome="Accueil" />
+        <h2>Pour vous inscrire, </h2>
+        <h:link value="cliquez ici !" outcome="Inscription" />
     </h:body>
-    <h2> Pour l'accueil clique ici Chloé ! </h2>
-    <h:link value="cliquez ici !" outcome="Accueil" />
-    <h2>Pour vous inscrire, </h2>
-    <h:link value="cliquez ici !" outcome="Inscription" />
 </html>
 
