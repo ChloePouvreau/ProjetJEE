@@ -7,28 +7,31 @@
         <title>InShare</title>
     </h:head>
     <h:body>
-        <h1><center>InShare</center></h1><br />
-        <body bgcolor = "#cc99ff"></body>
-        <img src="images/partage.jpg"/>
-        
-        <h:form> 
-            <center>
-            <table border="1" cellpadding="10" cellspacing="0,5" width="30%" bgcolor="#ff9999" >
-                <tr>
-                    <th width="40%" align="center">Login : </th> <td><p:inputText value ="#{ctlrpoit.poit.login}"/></td>   
-                </tr>
-                <tr>
-                    <th width="40%" align="center">Mot de passe : </th> <td><p:inputText value ="#{ctlrpoit.poit.motDePasse}" type = "password"/></td>
-                </tr>
+        <header>
+            <table>
+                    <tr>
+                        <th width="25%"></th>
+                        <th width="100%" align="center"><h1>InShare</h1></th>
+                        <h:form>
+                        <th> <p:commandButton value ="Inscription" action="Inscription"/> </th>
+                        <th> <p:commandButton value ="Connexion" action="Connexion"/></th>
+                        </h:form>
+                    </tr>
             </table>
-                <br />
-                <p:commandButton value ="Connexion" action="#{ctlrpoit.connexionPoitevin()}"/>
-            </center>
-        </h:form>
-        <h2> Pour l'accueil clique ici Chloé ! </h2>
-        <h:link value="cliquez ici !" outcome="Accueil" />
-        <h2>Pour vous inscrire, </h2>
-        <h:link value="cliquez ici !" outcome="Inscription" />
+        </header>
+        <body bgcolor = "#cc99ff"></body>
+        
+        <p align="center">
+        Bienvenue sur l'application web InShare !  <br/>
+        Vous n'avez pas envie d'aller acheter un objet pour une utilisation unique ? Alors connectez-vous !<br/>
+        Peut-être que des personnes dans Poitiers non loin de chez vous peut vous en préter un !<br/>
+        En échange ? Vous pouvez également proposer vos objets à vos voisins.<br/>
+        Des échanges gratuits mais avec une garantie de retour sans encombre .. <br/>
+        </p>
+        
+        <br/>
+        <body bgcolor = "#cc99ff"></body>
+        <p align="center"><img src="images/partage.jpg"/></p>
     </h:body>
 </html>
 

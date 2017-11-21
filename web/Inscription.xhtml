@@ -7,9 +7,14 @@
         <title>Inscription</title>
     </h:head>
     <h:body>
+        <h1><center>InShare</center></h1>
+        <br/>
+        
+        <body bgcolor = "#cc99ff"></body>
+        
         <h:form> 
             <center>
-            <table border="1" cellpadding="10" cellspacing="0,5" width="30%" bgcolor="#cc99ff" >
+            <table border="1" cellpadding="10" cellspacing="0,5" width="30%" bgcolor="#ff9999">
                 <tr>
                     <th width="40%" align="center">Login : </th> <td><p:inputText value ="#{ctlrpoit.poit.login}"/></td>   
                 </tr>
@@ -28,11 +33,12 @@
                 <tr>
                     <th width="40%" align="center">Email : </th> <td><p:inputText value ="#{ctlrpoit.poit.email}"/></td>   
                 </tr>
-            </table>
-            <br />
-            <p:commandButton value ="S'inscrire" action="#{ctlrpoit.addPoitevin()}" update=""/>
+               </table>
+               <br />
+            <p:commandButton value ="S'inscrire" action="#{ctlrpoit.addPoitevin()}" update="" />
             </center>
         </h:form>
+            
     </h:body>
 </html>
 

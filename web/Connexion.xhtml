@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>InShare</title>
+    </h:head>
+    <h:body>
+        <h1><center>InShare</center></h1><br />
+        
+        <body bgcolor = "#cc99ff"></body>
+        <p><span style ="float:left;"><img src="images/partage.jpg"/></span></p>
+        
+        <p><span style = "float:right;">
+            <h:form> 
+                <center>
+                <table border="1" cellpadding="10" cellspacing="0,5" width="30%" bgcolor="#ff9999" >
+                    <tr>
+                        <th width="40%" align="center">Login : </th> <td><p:inputText value ="#{ctlrpoit.poit.login}"/></td>   
+                    </tr>
+                    <tr>
+                        <th width="40%" align="center">Mot de passe : </th> <td><p:inputText value ="#{ctlrpoit.poit.motDePasse}" type = "password"/></td>
+                    </tr>
+                </table>
+                <br />
+                <p:commandButton value ="Connexion" action="#{ctlrpoit.connexionPoitevin()}"/>
+                </center>
+            </h:form>
+        </span></p>
+        <h2> Pour l'accueil clique ici Chloé ! </h2>
+        <h:link value="cliquez ici !" outcome="Accueil" />
+    </h:body>
+</html>
+

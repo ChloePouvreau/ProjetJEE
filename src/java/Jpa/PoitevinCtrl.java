@@ -29,7 +29,7 @@ public class PoitevinCtrl implements Serializable{
         dao.addPoitevin(this.poit);
         this.poit = new Poitevin();
         
-        return "index";
+        return "Connexion";
     }
 
     public void deletePoitevin(){
@@ -69,12 +69,13 @@ public class PoitevinCtrl implements Serializable{
             monPoit = listPoitevin.get(i);
             if (this.poit.getLogin().equals(monPoit.getLogin()) && this.poit.getMotDePasse().equals(monPoit.getMotDePasse())){
                 trouve = true;
+                break;
             }
         }
         if (trouve == true) {
             return "Accueil";
         } else {
-            return "indexErreur";
+            return "ConnexionErreur";
         }
     }
 
