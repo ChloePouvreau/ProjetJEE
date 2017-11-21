@@ -12,9 +12,9 @@
            
             <p:panel id="panel" header="Que recherchez-vous ?" style="margin-bottom:10px;">
                 <h:panelGrid columns="5" cellspacing="10">
-                    <p:inputText id="objet" value="#{search.objetRecherche}" required="true" label="Objet" size="100">
+                    <p:inputText id="objet" value="#{search.objet}" required="true" label="Objet" size="100">
                     </p:inputText>
-                    <p:selectOneMenu id="categorie" value="#{search.categorieRecherche}" required="true" label="Catégorie">
+                    <p:selectOneMenu id="categorie" value="#{search.categorie}" required="true" label="Catégorie">
                         <f:selectItem itemLabel="Toutes catégories" itemValue="All" />
                         <f:selectItems value="#{ctrlcategorie.categoriesName}" />
                     </p:selectOneMenu>

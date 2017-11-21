@@ -18,80 +18,51 @@ public class Search {
     @EJB
     private ObjetDao daoObjet;
     private ObjetCtrl objetCtrl;
-    private Objet objet;
-    private String objetRecherche;
+    private String objet;
     
     @EJB
     private CategorieDao daoCategorie;
     private CategorieCtrl categorieCtrl;
-    private Categorie categorie;
-    private String categorieRecherche;
+    private String categorie;
     
     public String search()
     {
-        searchObject(this.getObjetRecherche(), this.getCategorieRecherche());
+        searchObject(this.getObjet(), this.getCategorie());
         return "index";
     }
     
     private void searchObject(String nomObjet, String nomCategorie)
-    {
-        this.objet = new Objet();
-        this.objet.setNom(nomObjet);
-        this.objetCtrl = new ObjetCtrl();
-        this.objetCtrl.setObjet(this.objet);
-        
-        this.categorie = new Categorie();
-        this.categorie.setNom(nomCategorie);
+    {       
+        Categorie categorie = new Categorie();
+        categorie.setNom(nomCategorie);
         this.categorieCtrl = new CategorieCtrl();
-        this.categorieCtrl.setCategorie(this.categorie);
-        //this.objetCtrl.getObjet().setNom(texte);
-        if (this.getCategorie().getNom().equals("All"))
+        this.categorieCtrl.setCategorie(categorie);
+        if (this.categorieCtrl.getCategorie().getNom().equals("All"))
         {
             daoObjet.findByNomUncomplete(nomObjet);
         }
         else
         {
-            //this.categorieCtrl.getCategorie().setNom(nomCategorie);
-            //Categorie categorie = new Categorie(daoCategorie.findByNom().getIdCategorie(), daoCategorie.findByNom().getNom(), daoCategorie.findByNom().getImage());
-            this.categorieCtrl.getCategorie().setIdCategorie(daoCategorie.findByNom().getIdCategorie());
-            this.categorieCtrl.getCategorie().setIdCategorie(daoCategorie.findByNom().getIdCategorie());
-            this.categorieCtrl.getCategorie().setImage(daoCategorie.findByNom().getImage());
-            //this.objetCtrl.getObjet().setCategorie(categorie);
-            daoObjet.findByNomUncompleteAndCategory();
+            this.categorieCtrl.getCategorie().setIdCategorie(daoCategorie.findByNom(nomCategorie).getIdCategorie());
+            this.categorieCtrl.getCategorie().setImage(daoCategorie.findByNom(nomCategorie).getImage());
+            daoObjet.findByNomUncompleteAndCategory(nomObjet,categorie);
         }
     }
     
-    public Categorie getCategorie() {
+    public String getCategorie() {
         return categorie;
     }
 
-    public void setCategorie(Categorie categorie) {
+    public void setCategorie(String categorie) {
         this.categorie = categorie;
     }
     
-    public Objet getObjet()
+    public String getObjet()
     {
         return objet;
     }
     
-    public void setObjet(Objet objet) {
+    public void setObjet(String objet) {
         this.objet = objet;
-    }
-    
-    public String getCategorieRecherche() {
-        return categorieRecherche;
-    }
-
-    public void setCategorieRecherche(String categorie) {
-        this.categorieRecherche = categorie;
-    }
-    
-    public String getObjetRecherche()
-    {
-        return objetRecherche;
-    }
-    
-    public void setObjetRecherche(String objet) {
-        this.objetRecherche = objet;
     }
 }

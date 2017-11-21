@@ -30,14 +30,15 @@ public class CategorieDao {
         return (Categorie)query.getSingleResult();
     }
     
-    public Categorie findByNom(){
+    public Categorie findByNom(String nom){
         Query query = em.createNamedQuery("Categorie.findByNom");
+        query.setParameter("nom", nom);
+        Categorie result = (Categorie)query.getSingleResult();
+        return result;
+    }
+    
+    public Categorie findByImage(){
+        Query query = em.createNamedQuery("Categorie.findByImage");
         return (Categorie)query.getSingleResult();
-    }
-    
-    public void search(String texte, String nomCategorie)
-    {
-        
-    }
-    
+    }    
 }

@@ -27,24 +27,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "categorie")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Categorie.findAll", query = "SELECT c FROM Categorie c")})
+    @NamedQuery(name = "Categorie.findAll", query = "SELECT c FROM Categorie c")
+    , @NamedQuery(name = "Categorie.findByIdCategorie", query = "SELECT c FROM Categorie c WHERE c.idCategorie = :idCategorie")
+    , @NamedQuery(name = "Categorie.findByNom", query = "SELECT c FROM Categorie c WHERE c.nom = :nom")
+    , @NamedQuery(name = "Categorie.findByImage", query = "SELECT c FROM Categorie c WHERE c.image = :image")})
 public class Categorie implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "idCategorie")
     private Integer idCategorie;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "nom")
     private String nom;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "image")
     private String image;
 
     public Categorie() {
@@ -108,5 +101,4 @@ public class Categorie implements Serializable {
     public String toString() {
         return "Jpa.Categorie[ idCategorie=" + idCategorie + " ]";
     }
-    
 }

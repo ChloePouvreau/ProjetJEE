@@ -34,12 +34,14 @@ public class ObjetDao {
         Query query = em.createNamedQuery("Objet.findByNomUncomplete");
         query.setParameter("nom", "%"+nom+"%");
         List<Objet> result = query.getResultList();
-        System.out.println(result.size());
         return result;
     }
     
-    public List<Objet> findByNomUncompleteAndCategory(){
+    public List<Objet> findByNomUncompleteAndCategory(String nom, Categorie categorie){
         Query query = em.createNamedQuery("Objet.findByNomUncompleteAndCategory");
-        return query.getResultList();
+        query.setParameter("nom", "%"+nom+"%");
+        query.setParameter("categorie", categorie);
+        List<Objet> result = query.getResultList();
+        return result;
     }  
 }
