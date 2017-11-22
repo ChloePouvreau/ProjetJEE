@@ -3,9 +3,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import javax.faces.bean.ManagedBean;
 
 
 @Named(value="ctlrpoit")
@@ -14,7 +12,6 @@ public class PoitevinCtrl implements Serializable{
     
     //Entreprise Java Bean (EJB)
     @EJB
-    private ObjetDao daoObjet;
     private PoitevinDao dao;
     private Poitevin poit;
     
@@ -65,7 +62,8 @@ public class PoitevinCtrl implements Serializable{
                 trouve = true;
                 break;
             }
-        }        if (trouve == true) {
+        }        
+        if (trouve == true) {
             return "Accueil";
         } else {
             return "ConnexionErreur";
@@ -76,11 +74,6 @@ public class PoitevinCtrl implements Serializable{
     {
         
         return "Connexion";
-    }
-    
-    public String profilPoitevin()
-    {
-        return "Profil";
     }
 
     public Poitevin getPoit() {
