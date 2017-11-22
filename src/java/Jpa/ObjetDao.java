@@ -45,6 +45,13 @@ public class ObjetDao {
         return result;
     }  
     
+    public List<Objet> findByPoitevin(Poitevin poitevin){
+        Query query = em.createNamedQuery("Objet.findByPoitevin");
+        query.setParameter("idProprietaire", poitevin);
+        List<Objet> result = query.getResultList();
+        return result;
+    }  
+    
     public void deleteObjet(Objet o){
         em.remove(em.merge(o));
         em.flush();

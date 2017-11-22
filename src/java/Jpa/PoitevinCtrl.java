@@ -15,6 +15,10 @@ public class PoitevinCtrl implements Serializable{
     private PoitevinDao dao;
     private Poitevin poit;
     
+    @EJB
+    private ObjetDao daoObjet;
+    private ObjetCtrl ctrlObjet;
+    
     public PoitevinCtrl() {
         this.poit = new Poitevin();
     }
@@ -32,7 +36,7 @@ public class PoitevinCtrl implements Serializable{
     }
 
     public String deletePoitevin(){
-        
+        deleteObjetPoitevin();
         dao.deletePoitevin(this.poit);
         this.poit.setAge(0);
         this.poit.setNom("");
@@ -75,7 +79,20 @@ public class PoitevinCtrl implements Serializable{
         
         return "Connexion";
     }
+    
+    public List<Objet> searchObjectPoitevin()
+    {
+        return daoObjet.findByPoitevin(this.poit);
+    }
 
+    public void deleteObjetPoitevin()
+    {
+        for (Objet objet: searchObjectPoitevin())
+        {
+            daoObjet.deleteObjet(objet);
+        }
+    }
+    
     public Poitevin getPoit() {
         return poit;
     }
