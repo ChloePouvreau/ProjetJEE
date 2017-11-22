@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Chloe Pouvreau
+ * @author agath
  */
 @Entity
 @Table(name = "objet")
@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Objet.findAll", query = "SELECT o FROM Objet o")
     , @NamedQuery(name = "Objet.findById", query = "SELECT o FROM Objet o WHERE o.id = :id")
     , @NamedQuery(name = "Objet.findByNom", query = "SELECT o FROM Objet o WHERE o.nom = :nom")
+    , @NamedQuery(name = "Objet.findByDisponibilite", query = "SELECT o FROM Objet o WHERE o.disponibilite = :disponibilite")
     , @NamedQuery(name = "Objet.findByNomUncomplete", query = "SELECT o FROM Objet o WHERE o.nom LIKE :nom")
     , @NamedQuery(name = "Objet.findByNomUncompleteAndCategory", query = "SELECT o FROM Objet o WHERE o.nom LIKE CONCAT('%',:nom,'%') AND o.categorie = :categorie")})
 public class Objet implements Serializable {
@@ -47,9 +48,16 @@ public class Objet implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "Nom")
     private String nom;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "disponibilite")
+    private boolean disponibilite;
     @JoinColumn(name = "Categorie", referencedColumnName = "idCategorie")
     @ManyToOne(optional = false)
     private Categorie categorie;
+    @JoinColumn(name = "id_proprietaire", referencedColumnName = "Login")
+    @ManyToOne(optional = false)
+    private Poitevin idProprietaire;
 
     public Objet() {
     }
@@ -58,9 +66,10 @@ public class Objet implements Serializable {
         this.id = id;
     }
 
-    public Objet(Integer id, String nom) {
+    public Objet(Integer id, String nom, boolean disponibilite) {
         this.id = id;
         this.nom = nom;
+        this.disponibilite = disponibilite;
     }
 
     public Integer getId() {
@@ -79,12 +88,28 @@ public class Objet implements Serializable {
         this.nom = nom;
     }
 
+    public boolean getDisponibilite() {
+        return disponibilite;
+    }
+
+    public void setDisponibilite(boolean disponibilite) {
+        this.disponibilite = disponibilite;
+    }
+
     public Categorie getCategorie() {
         return categorie;
     }
 
     public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
+    }
+
+    public Poitevin getIdProprietaire() {
+        return idProprietaire;
+    }
+
+    public void setIdProprietaire(Poitevin idProprietaire) {
+        this.idProprietaire = idProprietaire;
     }
 
     @Override

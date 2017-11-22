@@ -14,6 +14,7 @@ public class PoitevinCtrl implements Serializable{
     
     //Entreprise Java Bean (EJB)
     @EJB
+    private ObjetDao daoObjet;
     private PoitevinDao dao;
     private Poitevin poit;
     
@@ -34,13 +35,14 @@ public class PoitevinCtrl implements Serializable{
     }
 
     public String deletePoitevin(){
+        
         dao.deletePoitevin(this.poit);
-        //this.poit.setAge(0);
-        //this.poit.setNom("");
-        //this.poit.setPrenom("");
-        //this.poit.setEmail("");
-        //this.poit.setLogin("");
-        //this.poit.setMotDePasse("");
+        this.poit.setAge(0);
+        this.poit.setNom("");
+        this.poit.setPrenom("");
+        this.poit.setEmail("");
+        this.poit.setLogin("");
+        this.poit.setMotDePasse("");
         
         return "index";
     }

@@ -44,4 +44,9 @@ public class ObjetDao {
         List<Objet> result = query.getResultList();
         return result;
     }  
+    
+    public void deleteObjet(Objet o){
+        em.remove(em.merge(o));
+        em.flush();
+    }
 }
