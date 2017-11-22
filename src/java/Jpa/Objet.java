@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author agath
+ * @author Chloe Pouvreau
  */
 @Entity
 @Table(name = "objet")
@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Objet.findAll", query = "SELECT o FROM Objet o")
     , @NamedQuery(name = "Objet.findById", query = "SELECT o FROM Objet o WHERE o.id = :id")
     , @NamedQuery(name = "Objet.findByNom", query = "SELECT o FROM Objet o WHERE o.nom = :nom")
+    , @NamedQuery(name = "Objet.findByDescription", query = "SELECT o FROM Objet o WHERE o.description = :description")
     , @NamedQuery(name = "Objet.findByDisponibilite", query = "SELECT o FROM Objet o WHERE o.disponibilite = :disponibilite")
     , @NamedQuery(name = "Objet.findByNomUncomplete", query = "SELECT o FROM Objet o WHERE o.nom LIKE :nom AND o.disponibilite=1")
     , @NamedQuery(name = "Objet.findByNomUncompleteAndCategory", query = "SELECT o FROM Objet o WHERE o.nom LIKE :nom AND o.categorie = :categorie AND o.disponibilite=1")
@@ -49,6 +50,9 @@ public class Objet implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "Nom")
     private String nom;
+    @Size(max = 200)
+    @Column(name = "Description")
+    private String description;
     @Basic(optional = false)
     @NotNull
     @Column(name = "disponibilite")
@@ -87,6 +91,14 @@ public class Objet implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public boolean getDisponibilite() {

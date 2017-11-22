@@ -5,6 +5,8 @@
  */
 package Jpa;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
@@ -25,27 +27,30 @@ public class Search {
     private CategorieCtrl categorieCtrl;
     private String categorie;
     
+    private List<Objet> objetRecherche;
+    
     public String search()
     {
         searchObject(this.getObjet(), this.getCategorie());
-        return "index";
+        return "Accueil";
     }
     
     private void searchObject(String nomObjet, String nomCategorie)
-    {       
+    {
+        this.objetRecherche = new ArrayList<Objet>();
         Categorie categorie = new Categorie();
         categorie.setNom(nomCategorie);
         this.categorieCtrl = new CategorieCtrl();
         this.categorieCtrl.setCategorie(categorie);
         if (this.categorieCtrl.getCategorie().getNom().equals("All"))
         {
-            daoObjet.findByNomUncomplete(nomObjet);
+            this.setObjetRecherche(daoObjet.findByNomUncomplete(nomObjet));
         }
         else
         {
             this.categorieCtrl.getCategorie().setIdCategorie(daoCategorie.findByNom(nomCategorie).getIdCategorie());
             this.categorieCtrl.getCategorie().setImage(daoCategorie.findByNom(nomCategorie).getImage());
-            daoObjet.findByNomUncompleteAndCategory(nomObjet,categorie);
+            this.setObjetRecherche(daoObjet.findByNomUncompleteAndCategory(nomObjet,categorie));
         }
     }
     
@@ -64,5 +69,14 @@ public class Search {
     
     public void setObjet(String objet) {
         this.objet = objet;
+    }
+    
+    public List<Objet> getObjetRecherche()
+    {
+        return objetRecherche;
+    }
+    
+    public void setObjetRecherche(List<Objet> objetRecherche) {
+        this.objetRecherche = objetRecherche;
     }
 }
