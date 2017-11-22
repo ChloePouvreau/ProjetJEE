@@ -22,31 +22,29 @@
                             <th width="40%" align="center">Login : </th> <td><h:outputText value ="#{ctlrpoit.poit.login}"/></td>   
                         </tr>
                         <tr>
-                            <th width="40%" align="center">Nom : </th> <td><h:outputText value ="#{ctlrpoit.poit.nom}"/></td>
+                            <th width="40%" align="center">Mot de passe : </th> <td><p:inputText value ="#{ctlrpoit.poit.motDePasse}" type="password"/></td>   
                         </tr>
                         <tr>
-                            <th width="40%" align="center">Prénom : </th> <td><h:outputText value ="#{ctlrpoit.poit.prenom}"/></td>   
+                            <th width="40%" align="center">Nom : </th> <td><p:inputText value ="#{ctlrpoit.poit.nom}"/></td>
                         </tr>
                         <tr>
-                            <th width="40%" align="center">Age : </th> <td><h:outputText value ="#{ctlrpoit.poit.age}"/></td>
+                            <th width="40%" align="center">Prénom : </th> <td><p:inputText value ="#{ctlrpoit.poit.prenom}"/></td>   
                         </tr>
                         <tr>
-                            <th width="40%" align="center">Email : </th> <td><h:outputText value ="#{ctlrpoit.poit.email}"/></td>   
+                            <th width="40%" align="center">Age : </th> <td><p:inputText value ="#{ctlrpoit.poit.age}"/></td>
+                        </tr>
+                        <tr>
+                            <th width="40%" align="center">Email : </th> <td><p:inputText value ="#{ctlrpoit.poit.email}"/></td>   
                         </tr>
                     </table>
                     <br />
-                    <p:commandButton value="Modifier mes informations" action="ModificationProfil"/>
+                    <p:commandButton value="OK" action="#{ctlrpoit.updatePoitevin()}"/>
                     </center>
                 </p:tab>
                 <p:tab title="Mes objets">
-                    <center>
                     A compléter
-                    <br />
-                    </center>
                 </p:tab>
             </p:tabView>
-            <br/>
-            <p align="right"><p:commandButton value="Supprimer mon compte" action="#{ctlrpoit.deletePoitevin()}" /></p>
         </h:form>
     </h:body>
 </html>

@@ -33,23 +33,22 @@ public class PoitevinCtrl implements Serializable{
         return "Connexion";
     }
 
-    public void deletePoitevin(){
+    public String deletePoitevin(){
         dao.deletePoitevin(this.poit);
-        this.poit.setAge(0);
-        this.poit.setNom("");
-        this.poit.setPrenom("");
-        this.poit.setEmail("");
-        this.poit.setLogin("");
-        this.poit.setMotDePasse("");
+        //this.poit.setAge(0);
+        //this.poit.setNom("");
+        //this.poit.setPrenom("");
+        //this.poit.setEmail("");
+        //this.poit.setLogin("");
+        //this.poit.setMotDePasse("");
+        
+        return "index";
     }
     
-    public void updatePoitevin(int a, String nom, String prenom, String mdp, String mail){
-        dao.updatePoitevin(this.poit);
-        this.poit.setAge(a);
-        this.poit.setNom(nom);
-        this.poit.setPrenom(prenom);
-        this.poit.setMotDePasse(mdp);
-        this.poit.setEmail(mail);
+    public String updatePoitevin(){
+        dao.updatePoitevin(this.poit);        
+        
+        return "Profil";  
     }
     
     public String connexionPoitevin()
@@ -64,8 +63,7 @@ public class PoitevinCtrl implements Serializable{
                 trouve = true;
                 break;
             }
-        }
-        if (trouve == true) {
+        }        if (trouve == true) {
             return "Accueil";
         } else {
             return "ConnexionErreur";
