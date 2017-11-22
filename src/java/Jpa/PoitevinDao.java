@@ -13,6 +13,8 @@ import javax.persistence.Query;
 
 
 @Stateless
+
+
 public class PoitevinDao {
     
     @PersistenceContext(unitName="ProjetJEEPU")

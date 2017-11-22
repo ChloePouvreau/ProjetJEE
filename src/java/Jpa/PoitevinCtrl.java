@@ -2,13 +2,14 @@ package Jpa;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import javax.swing.JOptionPane;
+import javax.faces.bean.ManagedBean;
 
 
 @Named(value="ctlrpoit")
-@ViewScoped
+@SessionScoped
 public class PoitevinCtrl implements Serializable{
     
     //Entreprise Java Bean (EJB)
@@ -51,15 +52,6 @@ public class PoitevinCtrl implements Serializable{
         this.poit.setEmail(mail);
     }
     
-    /* public String connexionPoitevin(String login, String mdp)
-    {
-        if (dao.findForConnexion(login, mdp).size() == 1) {
-            return "Accueil";
-        } else {
-            return "indexErreur";
-        }
-    } */
-    
     public String connexionPoitevin()
     {
         List<Poitevin> listPoitevin = this.getPoitevins();
@@ -68,6 +60,7 @@ public class PoitevinCtrl implements Serializable{
         for (int i = 0; i < listPoitevin.size(); i++){
             monPoit = listPoitevin.get(i);
             if (this.poit.getLogin().equals(monPoit.getLogin()) && this.poit.getMotDePasse().equals(monPoit.getMotDePasse())){
+                this.poit = monPoit;
                 trouve = true;
                 break;
             }
@@ -77,6 +70,17 @@ public class PoitevinCtrl implements Serializable{
         } else {
             return "ConnexionErreur";
         }
+    }
+    
+    public String deconnexionPoitevin()
+    {
+        
+        return "Connexion";
+    }
+    
+    public String profilPoitevin()
+    {
+        return "Profil";
     }
 
     public Poitevin getPoit() {

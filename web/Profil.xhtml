@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Inscription</title>
+    </h:head>
+    <h:body>
+        <h1><center>InShare</center></h1>
+        <br/>
+        
+        <body bgcolor = "#cc99ff"></body>
+        
+        <h:form> 
+            <center>
+            <table border="1" cellpadding="10" cellspacing="0,5" width="30%" bgcolor="#ff9999">
+                <tr>
+                    <th width="40%" align="center">Login : </th> <td><h:outputText value ="#{ctlrpoit.poit.login}"/></td>   
+                </tr>
+                <tr>
+                    <th width="40%" align="center">Nom : </th> <td><h:outputText value ="#{ctlrpoit.poit.nom}"/></td>
+                </tr>
+                <tr>
+                    <th width="40%" align="center">Prénom : </th> <td><h:outputText value ="#{ctlrpoit.poit.prenom}"/></td>   
+                </tr>
+                <tr>
+                    <th width="40%" align="center">Age : </th> <td><h:outputText value ="#{ctlrpoit.poit.age}"/></td>
+                </tr>
+                <tr>
+                    <th width="40%" align="center">Email : </th> <td><h:outputText value ="#{ctlrpoit.poit.email}"/></td>   
+                </tr>
+               </table>
+               <br />
+            </center>
+        </h:form>
+            
+    </h:body>
+</html>
+
