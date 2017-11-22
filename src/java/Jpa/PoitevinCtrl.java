@@ -36,7 +36,7 @@ public class PoitevinCtrl implements Serializable{
     }
 
     public String deletePoitevin(){
-        deleteObjetPoitevin();
+        //deleteObjetPoitevin();
         dao.deletePoitevin(this.poit);
         this.poit.setAge(0);
         this.poit.setNom("");

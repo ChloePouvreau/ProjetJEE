@@ -71,7 +71,7 @@ public class Poitevin implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "MotDePasse")
     private String motDePasse;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProprietaire")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "idProprietaire")
     private Collection<Objet> objetCollection;
 
     public Poitevin() {
