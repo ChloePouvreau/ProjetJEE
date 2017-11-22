@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Chloe Pouvreau
+ * @author agath
  */
 @Entity
 @Table(name = "categorie")
@@ -40,9 +40,21 @@ public class Categorie implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "idCategorie")
     private Integer idCategorie;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "nom")
     private String nom;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "image")
     private String image;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categorie")
+    private Collection<Objet> objetCollection;
 
     public Categorie() {
     }
@@ -81,6 +93,15 @@ public class Categorie implements Serializable {
         this.image = image;
     }
 
+    @XmlTransient
+    public Collection<Objet> getObjetCollection() {
+        return objetCollection;
+    }
+
+    public void setObjetCollection(Collection<Objet> objetCollection) {
+        this.objetCollection = objetCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -105,5 +126,5 @@ public class Categorie implements Serializable {
     public String toString() {
         return "Jpa.Categorie[ idCategorie=" + idCategorie + " ]";
     }
-
+    
 }

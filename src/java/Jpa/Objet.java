@@ -41,10 +41,23 @@ public class Objet implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
     private Integer id;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
+    @Column(name = "Nom")
     private String nom;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "disponibilite")
     private boolean disponibilite;
+    @JoinColumn(name = "Categorie", referencedColumnName = "idCategorie")
+    @ManyToOne(optional = false)
     private Categorie categorie;
+    @JoinColumn(name = "id_proprietaire", referencedColumnName = "Login")
+    @ManyToOne(optional = false)
     private Poitevin idProprietaire;
 
     public Objet() {
