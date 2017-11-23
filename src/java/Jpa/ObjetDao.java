@@ -52,6 +52,16 @@ public class ObjetDao {
         return result;
     }  
     
+    public void addObjet(Objet o){
+        em.persist(o);
+        em.flush();
+    }
+    
+    public void updateObjet(Objet o){
+        em.merge(o);
+        em.flush();
+    }
+    
     public void deleteObjet(Objet o){
         em.remove(em.merge(o));
         em.flush();

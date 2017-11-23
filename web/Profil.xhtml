@@ -36,12 +36,12 @@
                         </tr>
                     </table>
                     <br />
-                    <p:commandButton value="Modifier mes informations" action="ModificationProfil"/>
+                    <p:button value="Modifier mes informations" outcome="ModificationProfil"/>
                     </center>
                 </p:tab>
                 <p:tab title="Mes objets">
                     <center>
-                        <p:layout style="min-width:400px;min-height:200px;">
+                        <p:layout style="min-width:400px;min-height:300px;">
                             <p:layoutUnit position="west">
                                 <table border="1" cellpadding="10" cellspacing="0,5" width="30%" bgcolor="#ff9999">
                                     <tr>
@@ -57,15 +57,45 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <th width="40%" align="center">Description : </th> 
+                                        <td><h:inputText value ="#{ctrlobjet.objet.description}"/></td>   
+                                    </tr>
+                                    <tr>
                                         <th width="40%" align="center">Disponibilité : </th> 
                                         <td><h:inputText value ="#{ctrlobjet.objet.disponibilite}"/></td>   
                                     </tr>
                                 </table>
-                                <p:commandButton value="Ajouter l'objet" action="ModificationProfil"/>
+                                <br/>
+                                <p:commandButton value="Ajouter l'objet" action="#{ctrlobjet.addObjet()}"/>
                             </p:layoutUnit>
  
                             <p:layoutUnit position="center">
-                                Center
+                                    <p:repeat value="#{ctrlobjet.myObjet}" var="objet">
+                                        <h:panelGrid columns="4" style="width:100%" columnClasses="logo,detail">
+                                            <p:graphicImage url="#{objet.categorie.image}" />
+                    
+                                            <p:outputPanel>
+                                                <h:panelGrid columns="2" cellpadding="5"> 
+                                                    <h:outputText value="Nom de l'objet: " />
+                                                    <h:outputText value="#{objet.nom}" style="font-weight: bold"/>
+                                                </h:panelGrid>
+                                            </p:outputPanel>
+                    
+                                            <p:outputPanel>
+                                                <h:outputText value="Description: " />
+                                                <h:outputText value="#{objet.description}" style="font-weight: bold"/>
+                                            </p:outputPanel>
+                                            
+                                            <p:outputPanel>
+                                                <h:outputText value="Disponiblité " />
+                                                <h:outputText value="#{objet.disponibilite}" style="font-weight: bold"/>
+                                            </p:outputPanel>
+                    
+                                            <p:button value="Modifier" outcome="index"  />
+                                            <p:button value="Supprimer" outcome="index" />
+           
+                                        </h:panelGrid>
+                                    </p:repeat>
                             </p:layoutUnit>
                         </p:layout>
                     <br />

@@ -41,4 +41,41 @@ public class ObjetCtrl implements Serializable
     public void setObjet(Objet objet) {
         this.objet = objet;
     }
+    
+    public String addObjet(){
+        dao.addObjet(this.objet);
+        this.objet = new Objet();
+        
+        return "Profil";
+    }
+    
+    public String deleteObjet(){
+        dao.deleteObjet(this.objet);
+        //this.objet.setId(0);
+        //this.objet.setNom("");
+        //this.objet.setCategorie("");
+        //this.objet.setDescription("");
+        //this.objet.setIdProprietaire("");
+        
+        return "index";
+    }
+    
+    public String updateObjet(){
+        dao.updateObjet(this.objet);        
+        
+        return "Profil";  
+    }
+    
+    public List<Objet> myObjet(){
+        List<Objet> listObjet = this.getObjets();
+        Objet monObjet;
+        List<Objet> myObjets = new ArrayList();
+        for (int i = 0; i < listObjet.size(); i++){
+            monObjet = listObjet.get(i);
+            if (this.objet.getIdProprietaire().equals(monObjet.getIdProprietaire())){
+                myObjets.add(monObjet);
+            }
+        }
+        return myObjets;
+    }
 }
