@@ -32,17 +32,19 @@ public class ObjetDao {
         return (Objet)query.getSingleResult();
     }
     
-    public List<Objet> findByNomUncomplete(String nom){
+    public List<Objet> findByNomUncomplete(String nom, Poitevin poitevin){
         Query query = em.createNamedQuery("Objet.findByNomUncomplete");
         query.setParameter("nom", "%"+nom+"%");
+        query.setParameter("idProprietaire", poitevin);
         List<Objet> result = query.getResultList();
         return result;
     }
     
-    public List<Objet> findByNomUncompleteAndCategory(String nom, Categorie categorie){
+    public List<Objet> findByNomUncompleteAndCategory(String nom, Categorie categorie, Poitevin poitevin){
         Query query = em.createNamedQuery("Objet.findByNomUncompleteAndCategory");
         query.setParameter("nom", "%"+nom+"%");
         query.setParameter("categorie", categorie);
+        query.setParameter("idProprietaire", poitevin);
         List<Objet> result = query.getResultList();
         return result;
     }  

@@ -31,13 +31,13 @@ public class Search {
     
     private List<Objet> objetRecherche;
     
-    public String search()
+    public String search(Poitevin poitevin)
     {
-        searchObject(this.getObjet(), this.getCategorie());
+        searchObject(this.getObjet(), this.getCategorie(), poitevin);
         return "Accueil";
     }
     
-    private void searchObject(String nomObjet, String nomCategorie)
+    private void searchObject(String nomObjet, String nomCategorie, Poitevin poitevin)
     {
         this.objetRecherche = new ArrayList<Objet>();
         Categorie categorie = new Categorie();
@@ -46,13 +46,13 @@ public class Search {
         this.categorieCtrl.setCategorie(categorie);
         if (this.categorieCtrl.getCategorie().getNom().equals("All"))
         {
-            this.setObjetRecherche(daoObjet.findByNomUncomplete(nomObjet));
+            this.setObjetRecherche(daoObjet.findByNomUncomplete(nomObjet, poitevin));
         }
         else
         {
             this.categorieCtrl.getCategorie().setIdCategorie(daoCategorie.findByNom(nomCategorie).getIdCategorie());
             this.categorieCtrl.getCategorie().setImage(daoCategorie.findByNom(nomCategorie).getImage());
-            this.setObjetRecherche(daoObjet.findByNomUncompleteAndCategory(nomObjet,categorie));
+            this.setObjetRecherche(daoObjet.findByNomUncompleteAndCategory(nomObjet,categorie, poitevin));
         }
     }
     

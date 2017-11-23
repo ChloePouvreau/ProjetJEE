@@ -34,8 +34,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Objet.findByNom", query = "SELECT o FROM Objet o WHERE o.nom = :nom")
     , @NamedQuery(name = "Objet.findByDescription", query = "SELECT o FROM Objet o WHERE o.description = :description")
     , @NamedQuery(name = "Objet.findByDisponibilite", query = "SELECT o FROM Objet o WHERE o.disponibilite = :disponibilite")
-    , @NamedQuery(name = "Objet.findByNomUncomplete", query = "SELECT o FROM Objet o WHERE o.nom LIKE :nom AND o.disponibilite=1")
-    , @NamedQuery(name = "Objet.findByNomUncompleteAndCategory", query = "SELECT o FROM Objet o WHERE o.nom LIKE :nom AND o.categorie = :categorie AND o.disponibilite=1")
+    , @NamedQuery(name = "Objet.findByNomUncomplete", query = "SELECT o FROM Objet o WHERE o.nom LIKE :nom AND o.disponibilite=1 AND o.idProprietaire!=:idProprietaire")
+    , @NamedQuery(name = "Objet.findByNomUncompleteAndCategory", query = "SELECT o FROM Objet o WHERE o.nom LIKE :nom AND o.categorie = :categorie AND o.disponibilite=1 AND o.idProprietaire!=:idProprietaire")
     , @NamedQuery(name = "Objet.findByPoitevin", query = "SELECT o FROM Objet o WHERE o.idProprietaire = :idProprietaire")})
 public class Objet implements Serializable {
 

@@ -32,7 +32,7 @@
                         <f:selectItems value="#{ctrlcategorie.categoriesName}" />
                     </p:selectOneMenu>
 
-                    <p:commandButton value="Rechercher" action="#{search.search()}" ajax="false" icon="ui-icon-search" />
+                    <p:commandButton value="Rechercher" action="#{search.search(ctlrpoit.poit)}" ajax="false" icon="ui-icon-search" />
 
                 </h:panelGrid>
             </p:panel>
