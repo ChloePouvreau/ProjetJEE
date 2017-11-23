@@ -27,6 +27,10 @@ public class ObjetCtrl implements Serializable
     private ObjetDao dao;
     private Objet objet;
     
+    @EJB
+    private PoitevinDao daoPoit;
+    private PoitevinCtrl ctrlPoit;
+    
     
     public ObjetCtrl() {
         this.objet = new Objet();
@@ -34,8 +38,7 @@ public class ObjetCtrl implements Serializable
     
     public List<Objet> getObjets(){
         return dao.findAll();
-    }
-   
+    }   
 
     public Objet getObjet() {
         return objet;
@@ -46,13 +49,14 @@ public class ObjetCtrl implements Serializable
     }
     
     public String addObjet(){
+        this.objet.setIdProprietaire(ctrlPoit.getPoit());
         dao.addObjet(this.objet);
         this.objet = new Objet();
         
         return "Profil";
     }
     
-    public String deleteObjet(){
+    public void deleteObjet(){
         dao.deleteObjet(this.objet);
         //this.objet.setId(0);
         //this.objet.setNom("");
@@ -60,7 +64,6 @@ public class ObjetCtrl implements Serializable
         //this.objet.setDescription("");
         //this.objet.setIdProprietaire("");
         
-        return "index";
     }
     
     public String updateObjet(){

@@ -78,7 +78,6 @@ public class PoitevinCtrl implements Serializable{
     
     public String deconnexionPoitevin()
     {
-        
         return "Connexion";
     }
     
@@ -96,7 +95,7 @@ public class PoitevinCtrl implements Serializable{
     }
     
     public Poitevin getPoit() {
-        return poit;
+        return this.poit;
     }
 
     public void setPoit(Poitevin poitevin) {
@@ -113,8 +112,6 @@ public class PoitevinCtrl implements Serializable{
                 myObjets.add(monObjet);
             }
         }
-        //Poitevin monPoit = this.poit.getPoit();
-        //List<Objet> myObjets = this.dao.findByPoitevin(monPoit);
         
         return myObjets;
     }

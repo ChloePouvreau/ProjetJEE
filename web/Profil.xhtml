@@ -13,7 +13,7 @@
         
         <body bgcolor = "#cc99ff"></body>
         
-        <h:form>
+        <h:form id="form">
             <p:growl showDetail="true" />
             <p:tabView>
                 <p:tab title="Mes informations">
@@ -49,12 +49,9 @@
                                     <h:panelGrid columns="2" cellpadding="5"> 
                                         <h:outputText value="Nom de l'objet: " />
                                         <h:outputText value="#{objet.nom}" style="font-weight: bold"/>
+                                        <h:outputText value="Description: " />
+                                        <h:outputText value="#{objet.description}" style="font-weight: bold"/>
                                     </h:panelGrid>
-                                </p:outputPanel>
-                    
-                                <p:outputPanel>
-                                    <h:outputText value="Description: " />
-                                    <h:outputText value="#{objet.description}" style="font-weight: bold"/>
                                 </p:outputPanel>
                                             
                                 <p:outputPanel>
@@ -62,16 +59,21 @@
                                     <h:outputText value="#{objet.disponibilite}" style="font-weight: bold"/>
                                 </p:outputPanel>
                     
-                                <p:button value="Modifier" outcome="index"  />
-                                <p:button value="Supprimer" outcome="index" />
+                                <p:outputPanel>
+                                    <p:button value="Modifier" outcome="index"  />
+                                    <br/>
+                                    <p:commandButton value="Supprimer" actionListener="#{ctlrpoit.deleteObjetPoitevin()}" update="form"/>
+                                </p:outputPanel>
            
                             </h:panelGrid>
+                            <br/>
                         </p:repeat>
                     <br />
+                    <p:commandButton value="Ajouter un objet" action="AjouterObjet" />
                     </center>
                 </p:tab>
             </p:tabView>
-            <p align="right"><p:commandButton value="Supprimer mon compte" actionListener="#{ctlrpoit.deletePoitevin()}" /></p>
+            <p align="right"><p:commandButton value="Supprimer mon compte" actionListener="#{ctlrpoit.deletePoitevin()}" action="index" /></p>
             <br/>
         </h:form>
         
