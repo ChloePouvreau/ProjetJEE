@@ -17,16 +17,11 @@
             <center>
                 <table border="1" cellpadding="10" cellspacing="0,5" width="30%" bgcolor="#ff9999">
                     <tr>
-                        <th width="40%" align="center">Nom : </th> <td><h:inputText value ="#{ctrlobjet.objet.nom}"/></td>   
+                        <th width="40%" align="center">Nom : </th> <td><h:outputText value ="#{ctrlobjet.objet.nom}"/></td>   
                     </tr>
                     <tr>
                         <th width="40%" align="center">Catégorie : </th> 
-                        <td>
-                            <p:selectOneMenu id="categorie" value="#{search.categorie}" required="true" label="Catégorie">
-                                <f:selectItem itemLabel="Toutes catégories" itemValue="All" />
-                                <f:selectItems value="#{ctrlcategorie.categoriesName}" />
-                            </p:selectOneMenu>
-                        </td>
+                        <td><h:outputText value ="#{ctrlobjet.objet.categorie}"/></td>
                     </tr>
                     <tr>
                         <th width="40%" align="center">Description : </th> 
@@ -38,7 +33,7 @@
                     </tr>
                 </table>
                 <br/>
-                <p:commandButton value="Modifier l'objet" actionListener="#{ctrlobjet.addObjet()}"/>
+                <p:commandButton value="Modifier l'objet" actionListener="#{ctrlobjet.updateObjet()}"/>
             </center>
         </h:form>
     </h:body>

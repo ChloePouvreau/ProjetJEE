@@ -22,7 +22,7 @@
                     <tr>
                         <th width="40%" align="center">Catégorie : </th> 
                         <td>
-                            <p:selectOneMenu id="categorie" value="#{search.categorie}" required="true" label="Catégorie">
+                            <p:selectOneMenu id="categorie" value="#{ctrlobjet.categorie}" required="true" label="Catégorie">
                                 <f:selectItem itemLabel="Toutes catégories" itemValue="All" />
                                 <f:selectItems value="#{ctrlcategorie.categoriesName}" />
                             </p:selectOneMenu>
@@ -38,7 +38,7 @@
                     </tr>
                 </table>
                 <br/>
-                <p:commandButton value="Ajouter l'objet" actionListener="#{ctrlobjet.addObjet()}"/>
+                <p:commandButton value="Ajouter l'objet" action="#{ctrlobjet.addObjet()}"/>
             </center>
         </h:form>
     </h:body>

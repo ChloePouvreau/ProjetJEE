@@ -8,7 +8,18 @@
         <title>Inscription</title>
     </h:head>
     <h:body>
-        <h1><center>Mon profil</center></h1>
+        <header>
+            <table bgcolor = "#9900cc">
+                <tr>
+                    <h:form>
+                        <th width="10%" align="left"><p:button value="Retour" outcome="Accueil"/></th>
+                        <th width="80%" align ="center">Bonjour <h:outputText value = "#{ctlrpoit.poit.login}" /></th>
+                        <th width="10%" align="center"><p:button value="Mes réservations" outcome="Reservation"/></th>
+                        <th align="right"><p:commandButton value="Déconnexion" action="#{ctlrpoit.deconnexionPoitevin()}"/></th>
+                    </h:form>
+                </tr>
+            </table>
+        </header>
         <br/>
         
         <body bgcolor = "#cc99ff"></body>
@@ -60,7 +71,7 @@
                                 </p:outputPanel>
                     
                                 <p:outputPanel>
-                                    <p:button value="Modifier" outcome="index"  />
+                                    <p:button value="Modifier" outcome="ModificationObjet"  />
                                     <br/>
                                     <p:commandButton value="Supprimer" actionListener="#{ctlrpoit.deleteObjetPoitevin()}" update="form"/>
                                 </p:outputPanel>
@@ -71,12 +82,7 @@
                     <br />
                     <p:commandButton value="Ajouter un objet" action="AjouterObjet" />
                     </center>
-                </p:tab><p:tab title="Mes réservations">
-                    <center>
-                        Là il y a mes réservations normalement
-                    </center>
-                </p:tab>
-                
+                </p:tab>                
             </p:tabView>
             <p align="right"><p:commandButton value="Supprimer mon compte" actionListener="#{ctlrpoit.deletePoitevin()}" action="index" /></p>
             <br/>
