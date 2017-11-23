@@ -20,7 +20,28 @@
             </table>
         </header>
         <br/>
-        Ceci est la page de réservation
+        <p:repeat value="#{search.objetRecherche}" var="objet">
+                <h:panelGrid columns="5" style="width:100%" columnClasses="logo,detail">
+                    <p:graphicImage url="#{objet.categorie.image}" />
+                    
+            <p:outputPanel>
+                <h:panelGrid columns="2" cellpadding="5"> 
+                    <h:outputText value="Nom de l'objet: " />
+                    <h:outputText value="#{objet.nom}" style="font-weight: bold"/>
+ 
+                    <h:outputText value="Nom du propriétaire: " />
+                    <h:outputText value="#{objet.idProprietaire.prenom} #{objet.idProprietaire.nom}" style="font-weight: bold"/>
+                
+                    <h:outputText value="Description: " />
+                    <h:outputText value="#{objet.description}" style="font-weight: bold"/>
+                </h:panelGrid>
+            </p:outputPanel>
+                                        
+            <p:outputLabel for="popup" value="Date rendu: " />
+            <p:calendar id="popup" value="#{booked.date}" />
+            </h:panelGrid>
+        <hr />
+    </p:repeat>
     </h:body>
 </html>
 

@@ -17,28 +17,27 @@
             <center>
                 <table border="1" cellpadding="10" cellspacing="0,5" width="30%" bgcolor="#ff9999">
                     <tr>
-                        <th width="40%" align="center">Nom : </th> <td><h:inputText value ="#{ctrlobjet.objet.nom}"/></td>   
+                        <th width="40%" align="center">Nom : </th> <td><p:inputText value ="#{ctrlobjet.objet.nom}"/></td>   
                     </tr>
                     <tr>
                         <th width="40%" align="center">Catégorie : </th> 
                         <td>
                             <p:selectOneMenu id="categorie" value="#{ctrlobjet.categorie}" required="true" label="Catégorie">
-                                <f:selectItem itemLabel="Toutes catégories" itemValue="All" />
                                 <f:selectItems value="#{ctrlcategorie.categoriesName}" />
                             </p:selectOneMenu>
                         </td>
                     </tr>
                     <tr>
                         <th width="40%" align="center">Description : </th> 
-                        <td><h:inputText value ="#{ctrlobjet.objet.description}"/></td>   
+                        <td><p:inputText value ="#{ctrlobjet.objet.description}"/></td>   
                     </tr>
                     <tr>
                         <th width="40%" align="center">Disponibilité : </th> 
-                        <td><h:inputText value ="#{ctrlobjet.objet.disponibilite}"/></td>   
+                        <td><p:inputText value ="#{ctrlobjet.objet.disponibilite}"/></td>   
                     </tr>
                 </table>
                 <br/>
-                <h:commandButton value="Ajouter l'objet" action="#{ctrlobjet.addObjet()}"/>
+                <p:commandButton value="Ajouter l'objet" action="#{ctrlobjet.addObjet(ctlrpoit.poit)}"/>
             </center>
         </h:form>
     </h:body>

@@ -55,15 +55,14 @@ public class ObjetCtrl implements Serializable
         return categorie;
     }
     
-    public String addObjet(){
-        this.objet.setIdProprietaire(ctrlPoit.getPoit());
-        
-        Categorie maCategorie = new Categorie();
-        //this.ctrlCat = new CategorieCtrl();
-        maCategorie.setNom(this.getCategorie());
-        //this.ctrlCat.setCategorie(maCategorie);
-        //this.ctrlCat.getCategorie().setIdCategorie(daoCat.findByNom(this.getCategorie()).getIdCategorie());
-        this.objet.setCategorie(maCategorie);
+    public void setCategorie(String categorie) {
+        this.categorie=categorie;
+    }
+    
+    public String addObjet(Poitevin poitevin){
+        this.objet.setIdProprietaire(poitevin);
+        Categorie categorie = this.daoCat.findByNom(this.getCategorie());
+        this.objet.setCategorie(categorie);
         
         dao.addObjet(this.objet);
         this.objet = new Objet();
