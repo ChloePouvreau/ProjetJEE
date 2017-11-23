@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.swing.JOptionPane;
@@ -18,12 +19,14 @@ import javax.swing.JOptionPane;
  * @author Chloe Pouvreau
  */
 @Named(value="ctrlobjet")
-@ViewScoped
+@SessionScoped
+
 public class ObjetCtrl implements Serializable
 {
     @EJB
     private ObjetDao dao;
     private Objet objet;
+    
     
     public ObjetCtrl() {
         this.objet = new Objet();
@@ -64,18 +67,5 @@ public class ObjetCtrl implements Serializable
         dao.updateObjet(this.objet);        
         
         return "Profil";  
-    }
-    
-    public List<Objet> myObjet(){
-        List<Objet> listObjet = this.getObjets();
-        Objet monObjet;
-        List<Objet> myObjets = new ArrayList();
-        for (int i = 0; i < listObjet.size(); i++){
-            monObjet = listObjet.get(i);
-            if (this.objet.getIdProprietaire().equals(monObjet.getIdProprietaire())){
-                myObjets.add(monObjet);
-            }
-        }
-        return myObjets;
     }
 }

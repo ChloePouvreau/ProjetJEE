@@ -1,5 +1,6 @@
 package Jpa;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -62,7 +63,8 @@ public class PoitevinCtrl implements Serializable{
         for (int i = 0; i < listPoitevin.size(); i++){
             monPoit = listPoitevin.get(i);
             if (this.poit.getLogin().equals(monPoit.getLogin()) && this.poit.getMotDePasse().equals(monPoit.getMotDePasse())){
-                this.poit = monPoit;
+                //this.poit = monPoit;
+                setPoit(monPoit);
                 trouve = true;
                 break;
             }
@@ -101,4 +103,19 @@ public class PoitevinCtrl implements Serializable{
         this.poit = poitevin;
     }
     
+     public List<Objet> myObjet(){
+        List<Objet> listObjet = daoObjet.findAll();
+        Objet monObjet;
+        List<Objet> myObjets = new ArrayList<>();
+        for (int i = 0; i < listObjet.size(); i++){
+            monObjet = listObjet.get(i);
+            if (this.poit.getLogin().equals(monObjet.getIdProprietaire().getLogin())){
+                myObjets.add(monObjet);
+            }
+        }
+        //Poitevin monPoit = this.poit.getPoit();
+        //List<Objet> myObjets = this.dao.findByPoitevin(monPoit);
+        
+        return myObjets;
+    }
 }

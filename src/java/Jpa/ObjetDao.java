@@ -22,7 +22,9 @@ public class ObjetDao {
     private EntityManager em;
     
     public List<Objet> findAll(){
-        return em.createNamedQuery("Objet.findAll").getResultList();
+        Query query = em.createNamedQuery("Objet.findAll");
+        List<Objet> lst = query.getResultList();
+        return lst;
     }
    
     public Objet findById(){
