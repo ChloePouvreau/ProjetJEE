@@ -9,12 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author Chloe Pouvreau
  */
 @ManagedBean
+@SessionScoped
 public class Search {
     
     @EJB

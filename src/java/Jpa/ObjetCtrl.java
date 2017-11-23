@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,7 +18,6 @@ import javax.swing.JOptionPane;
  */
 @Named(value="ctrlobjet")
 @SessionScoped
-
 public class ObjetCtrl implements Serializable
 {
     @EJB

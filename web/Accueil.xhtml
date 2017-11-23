@@ -36,10 +36,9 @@
                 </h:panelGrid>
             </p:panel>
         </h:form>
-        
-        <h:form id="resultat">
+        <h:form>
             <p:repeat value="#{search.objetRecherche}" var="objet">
-                <h:panelGrid columns="4" style="width:100%" columnClasses="logo,detail">
+                <h:panelGrid columns="5" style="width:100%" columnClasses="logo,detail">
                     <p:graphicImage url="#{objet.categorie.image}" />
                     
             <p:outputPanel>
@@ -49,20 +48,22 @@
  
                     <h:outputText value="Nom du propriétaire: " />
                     <h:outputText value="#{objet.idProprietaire.prenom} #{objet.idProprietaire.nom}" style="font-weight: bold"/>
+                
+                    <h:outputText value="Description: " />
+                    <h:outputText value="#{objet.description}" style="font-weight: bold"/>
                 </h:panelGrid>
             </p:outputPanel>
+                                        
+            <p:outputLabel for="popup" value="Date rendu: " />
+            <p:calendar id="popup" value="#{booked.date}" />
                     
-            <p:outputPanel>
-                <h:outputText value="Description: " />
-                <h:outputText value="#{objet.description}" style="font-weight: bold"/>
-            </p:outputPanel>
-                    
-            <p:commandButton value="Réserver" action="#{search.search()}" ajax="false" />
+            <p:commandButton value="Réserver" actionListener="#{booked.booked(objet,ctlrpoit.poit)}" />
            
         </h:panelGrid>
         <hr />
     </p:repeat>
-</h:form>
+            
+    </h:form>
     </h:body>
 </html>
 
