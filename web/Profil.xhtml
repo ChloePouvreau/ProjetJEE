@@ -14,7 +14,7 @@
                     <h:form>
                         <th width="10%" align="left"><p:button value="Retour" outcome="Accueil"/></th>
                         <th width="77%" align ="center">Bonjour <h:outputText value = "#{ctlrpoit.poit.login}" /></th>
-                        <th width="13%" align="center"><p:button value="Mes réservations" outcome="Reservation"/></th>
+                        <th width="13%" align="center"><p:commandButton value="Mes réservations" action="#{booked.searchMyObjects(ctlrpoit.poit)}"/></th>
                         <th align="right"><p:commandButton value="Déconnexion" action="#{ctlrpoit.deconnexionPoitevin()}"/></th>
                     </h:form>
                 </tr>

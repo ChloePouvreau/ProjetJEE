@@ -78,12 +78,6 @@ public class Search {
         return objetRecherche;
     }
     
-    public String searchMyObjects(Poitevin poitevin)
-    {
-        this.setObjetRecherche(daoObjet.findByPoitevin(poitevin));
-        return "Reservation";
-    }
-    
     public void setObjetRecherche(List<Objet> objetRecherche) {
         this.objetRecherche = objetRecherche;
     }

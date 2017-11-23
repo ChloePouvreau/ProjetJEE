@@ -8,6 +8,7 @@ package Jpa;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -25,6 +26,8 @@ public class Booked implements Serializable {
     private ObjetCtrl objetCtrl;
     private Date date;
     
+    private List<Objet> objetReserve;
+    
     public String booked(Objet objet, Poitevin poitevin)
     {
         objet.setDisponibilite(false);
@@ -40,5 +43,21 @@ public class Booked implements Serializable {
     public void setDate(Date date)
     {
         this.date=date;
+    }
+    
+    public String searchMyObjects(Poitevin poitevin)
+    {
+        this.setObjetReserve(dao.findByPoitevin(poitevin));
+        return "Reservation";
+    }
+    
+    public List<Objet> getObjetReserve()
+    {
+        return objetReserve;
+    }
+    
+    public void setObjetReserve(List<Objet> objetReserve)
+    {
+        this.objetReserve = objetReserve;
     }
 }
