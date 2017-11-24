@@ -15,7 +15,7 @@
                         <th width="10%" align="left"><p:button value="Retour" outcome="Accueil"/></th>
                         <th width="75%" align ="center">Bonjour <h:outputText value = "#{ctlrpoit.poit.login}" /></th>
                         <th width="15%" align="center"><p:button value="Mon profil" outcome="Profil"/></th>
-                        <th align="right"><p:commandButton value="Déconnexion" action="#{ctlrpoit.deconnexionPoitevin()}"/></th>
+                        <th align="right"><p:commandButton value="Déconnexion" action="index" actionListener="#{ctlrpoit.deconnexionPoitevin()}"/></th>
                     </h:form>
                 </tr>
             </table>

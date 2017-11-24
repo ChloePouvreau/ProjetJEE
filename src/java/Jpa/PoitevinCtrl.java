@@ -76,10 +76,10 @@ public class PoitevinCtrl implements Serializable{
         }
     }
     
-    public String deconnexionPoitevin()
+    public void deconnexionPoitevin()
     {
-        this.setPoit(null);
-        return "Connexion";
+        Poitevin poitevin = new Poitevin();
+        this.setPoit(poitevin);
     }
     
     public List<Objet> searchObjectPoitevin()
