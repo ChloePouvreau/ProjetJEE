@@ -22,17 +22,28 @@ import javax.faces.bean.SessionScoped;
 public class Booked implements Serializable {
     
     @EJB
-    private ObjetDao dao;
-    private ObjetCtrl objetCtrl;
+    private ObjetDao daoObjet;
+    
+    @EJB
+    private PartageDao daoPartage;
+    
     private Date date;
     
     private List<Objet> objetReserve;
     
-    public String booked(Objet objet, Poitevin poitevin)
+    public void booked(Objet objet, Poitevin poitevin, Search search)
     {
         objet.setDisponibilite(false);
-        dao.updateObjet(objet);
-        return "Reservation";
+        daoObjet.updateObjet(objet);
+        Partage partage = new Partage();
+        partage.setIdObjet(objet);
+        partage.setIdLocataire(poitevin);
+        partage.setDeadline(this.getDate());
+        daoPartage.addPartage(partage);
+        
+        List<Objet> objets = new ArrayList<Objet>();
+        search.setObjetRecherche(objets);
+        
     }
     
     public Date getDate()
@@ -47,7 +58,7 @@ public class Booked implements Serializable {
     
     public String searchMyObjects(Poitevin poitevin)
     {
-        this.setObjetReserve(dao.findByPoitevin(poitevin));
+        this.setObjetReserve(daoObjet.findByPoitevin(poitevin));
         return "Reservation";
     }
     

@@ -39,6 +39,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Poitevin.findByMotDePasse", query = "SELECT p FROM Poitevin p WHERE p.motDePasse = :motDePasse")})
 public class Poitevin implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idLocataire")
+    private Collection<Partage> partageCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -170,6 +173,15 @@ public class Poitevin implements Serializable {
     @Override
     public String toString() {
         return "Jpa.Poitevin[ login=" + login + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Partage> getPartageCollection() {
+        return partageCollection;
+    }
+
+    public void setPartageCollection(Collection<Partage> partageCollection) {
+        this.partageCollection = partageCollection;
     }
     
 }

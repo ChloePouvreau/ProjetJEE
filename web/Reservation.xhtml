@@ -21,27 +21,59 @@
             </table>
         </header>
         <br/>
-        <p:repeat value="#{booked.objetReserve}" var="objet">
+        <p:tabView>
+            <p:tab title="Mes locations">
+        <p:repeat value="#{ctrlpartage.getMyPartages(ctlrpoit.poit)}" var="partage">
                 <h:panelGrid columns="5" style="width:100%" columnClasses="logo,detail">
-                    <p:graphicImage url="#{objet.categorie.image}" />
+                    <p:graphicImage url="#{partage.idObjet.categorie.image}" />
                     
             <p:outputPanel>
                 <h:panelGrid columns="2" cellpadding="5"> 
                     <h:outputText value="Nom de l'objet: " />
-                    <h:outputText value="#{objet.nom}" style="font-weight: bold"/>
+                    <h:outputText value="#{partage.idObjet.nom}" style="font-weight: bold"/>
  
                     <h:outputText value="Nom du propriétaire: " />
-                    <h:outputText value="#{objet.idProprietaire.prenom} #{objet.idProprietaire.nom}" style="font-weight: bold"/>
+                    <h:outputText value="#{partage.idObjet.idProprietaire.prenom} #{partage.idObjet.idProprietaire.nom}" style="font-weight: bold"/>
                 
                     <h:outputText value="Description: " />
-                    <h:outputText value="#{objet.description}" style="font-weight: bold"/>
+                    <h:outputText value="#{partage.idObjet.description}" style="font-weight: bold"/>
                 </h:panelGrid>
             </p:outputPanel>
                                         
             <p:outputLabel value="Date rendu: " />
+            <h:outputText value="#{partage.deadline}" style="font-weight: bold"/>
             </h:panelGrid>
         <hr />
     </p:repeat>
+                </p:tab> 
+            
+            
+            
+            <p:tab title="Mes objets loués">
+                <p:repeat value="#{ctrlpartage.getMyObjects(ctlrpoit.poit)}" var="partage">
+                <h:panelGrid columns="5" style="width:100%" columnClasses="logo,detail">
+                    <p:graphicImage url="#{partage.idObjet.categorie.image}" />
+                    
+            <p:outputPanel>
+                <h:panelGrid columns="2" cellpadding="5"> 
+                    <h:outputText value="Nom de l'objet: " />
+                    <h:outputText value="#{partage.idObjet.nom}" style="font-weight: bold"/>
+ 
+                    <h:outputText value="Nom du locataire: " />
+                    <h:outputText value="#{partage.idLocataire.prenom} #{partage.idLocataire.nom}" style="font-weight: bold"/>
+                
+                    <h:outputText value="Description: " />
+                    <h:outputText value="#{partage.idObjet.description}" style="font-weight: bold"/>
+                </h:panelGrid>
+            </p:outputPanel>
+                                        
+            <p:outputLabel value="Date rendu: " />
+            <h:outputText value="#{partage.deadline}" style="font-weight: bold"/>
+            </h:panelGrid>
+        <hr />
+    </p:repeat>
+                </p:tab>
+            </p:tabView>
     </h:body>
 </html>
 

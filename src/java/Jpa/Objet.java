@@ -6,7 +6,9 @@
 package Jpa;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,10 +18,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -38,6 +42,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Objet.findByNomUncompleteAndCategory", query = "SELECT o FROM Objet o WHERE o.nom LIKE :nom AND o.categorie = :categorie AND o.disponibilite=1 AND o.idProprietaire!=:idProprietaire")
     , @NamedQuery(name = "Objet.findByPoitevin", query = "SELECT o FROM Objet o WHERE o.idProprietaire = :idProprietaire")})
 public class Objet implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idObjet")
+    private Collection<Partage> partageCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -148,6 +155,15 @@ public class Objet implements Serializable {
     @Override
     public String toString() {
         return "Jpa.Objet[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Partage> getPartageCollection() {
+        return partageCollection;
+    }
+
+    public void setPartageCollection(Collection<Partage> partageCollection) {
+        this.partageCollection = partageCollection;
     }
     
 }

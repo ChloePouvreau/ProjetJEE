@@ -58,7 +58,7 @@
             <p:outputLabel for="popup" value="Date rendu: " />
             <p:calendar id="popup" value="#{booked.date}" />
                     
-            <p:commandButton value="Réserver" actionListener="#{booked.booked(objet,ctlrpoit.poit)}" />
+            <p:commandButton value="Réserver" action="Reservation" actionListener="#{booked.booked(objet,ctlrpoit.poit,search)}" />
            
         </h:panelGrid>
         <hr />
