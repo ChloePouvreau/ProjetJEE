@@ -37,6 +37,12 @@ public class Search {
         return "Accueil";
     }
     
+    public void deleteSearch(Search search)
+    {
+        List<Objet> objets = new ArrayList<Objet>();
+        search.setObjetRecherche(objets);
+    }
+    
     private void searchObject(String nomObjet, String nomCategorie, Poitevin poitevin)
     {
         this.objetRecherche = new ArrayList<Objet>();
